@@ -76,9 +76,19 @@ else
     exit 1
 fi
 
+# Install create-env-example script
+if [ -f "$SCRIPT_DIR/create-env-example.sh" ]; then
+    install_script "create-env-example" "$SCRIPT_DIR/create-env-example.sh" "$INSTALL_DIR"
+else
+    echo -e "${YELLOW}Warning:${NC} create-env-example.sh not found in $SCRIPT_DIR"
+fi
+
 # Future scripts can be added here
 # install_script "another-script" "$SCRIPT_DIR/another-script.sh" "$INSTALL_DIR"
 
 echo -e "\n${GREEN}Installation complete!${NC}"
-echo "You can now use: gitignore <language>"
-echo "For help, run: gitignore -h"
+echo "Available commands:"
+echo "  gitignore <language> - Generate .gitignore files"
+echo "  create-env-example   - Create .env.example from .env"
+echo ""
+echo "For help: gitignore -h"
